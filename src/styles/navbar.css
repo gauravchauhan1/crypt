@@ -1,0 +1,41 @@
+
+.navbar{
+        height: 10vh;
+        background-color:;
+        
+}
+.nav-items{
+        list-style:none;
+        padding-right:2rem;
+}
+
+.nav-link{
+        text-align: left;
+        border-radius:10px;
+        border:none;
+        outline:none;
+        color: #0d0543;
+        text-decoration: none;
+}
+
+.nav-link-item a:focus{
+        background-color: #e3fffd;
+}
+
+.sidebar{
+        margin-top: 1rem;
+        position: fixed;
+        width: 300px;
+        border-right:1px solid;
+        height: 100%;
+        
+
+}
+
+.sidebar-item{
+        padding-left: 2rem;
+        padding-bottom: 1rem;
+        margin: 10px;
+        border-radius: 5px;
+    
+}
