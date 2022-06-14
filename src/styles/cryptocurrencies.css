@@ -1,0 +1,9 @@
+.main-container-list{
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.main-container-list a{
+    text-decoration: none;
+    color:black
+}

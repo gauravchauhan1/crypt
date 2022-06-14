@@ -14,15 +14,15 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
-        <div className="main-wrapper">
-          <Sidebar />
+        {/* <Sidebar /> */}
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/" element={<Home  />} />
             <Route path="/cryptocurrencies" element={<Cryptocurrencies />} />
             <Route path="/exchanges" element={<Exchanges />} />
             <Route path="/news" element={<News />} />
+            <Route path="/cryptocurrencies/:id" element={<Home />} />
           </Routes>
-        </div>
+        
       </Router>
     </div>
   );
