@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import millify from "millify";
@@ -7,16 +7,37 @@ import '../styles/cryptocurrencies.css'
 
 
 const Cryptocurrencies = ({simplified}) => {
-  const count = (simplified)?10:50
   const {data,isFetching} = useGetCryptosQuery()
-
-  const [cryptoCoins,setCryptoCoins] = useState(data?.data?.coins)
+  const [search,setSearch] = useState('')
+  const [cryptoCoins,setCryptoCoins] = useState([])
   
+  useEffect(() => {
+    const filteredCoins = data?.data?.coins.filter(coin => coin.name.toLowerCase().includes(search.toLowerCase()))
+    setCryptoCoins(filteredCoins)
+  }, [search,cryptoCoins])
+  
+  
+  
+  const searchCoin = (searchstring) => {
+    setSearch(searchstring)
+  }
 
   
   return ( 
+  <>
+    {
+      !simplified && (
+        <div className='search-bar'>
+          <form>  
+            <input type='string'  onChange={(e)=>searchCoin(e.target.value)}/>
+            
+          </form>
+        </div>
+      )
+    }
+    
     <div className="main-container-list">
-      {cryptoCoins.map(coin => (
+      {cryptoCoins?.map(coin => (
 
         <Link to={`/cryptocurrencies/${coin.uuid}`} key={coin.id}>
         <div className="card" style={{width: "18rem"}}>
@@ -36,6 +57,8 @@ const Cryptocurrencies = ({simplified}) => {
       )}
       working
     </div>
+  </>
+    
   );
 };
 
